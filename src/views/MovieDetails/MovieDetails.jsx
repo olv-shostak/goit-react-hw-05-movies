@@ -1,6 +1,8 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, Route, Routes } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import * as filmAPI from '../../services/film-app';
+import Cast from '../Cast/Cast';
+import Reviews from '../Reviews/Reviews';
 
 export default function MovieDetails() {
   const [movie, setMovie] = useState(null);
@@ -40,10 +42,15 @@ export default function MovieDetails() {
             })}
           </ul>
           <hr />
-          <Link to="/">
+          <Link to={`/movies/${movieId}/cast`}>
             Cast
           </Link>
-          <Link to="/movies">Reviews</Link>
+          <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
+          <hr />
+          <Routes>
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
+          </Routes>
         </>
       )}
     </>
