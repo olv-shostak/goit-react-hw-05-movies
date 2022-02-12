@@ -9,10 +9,20 @@ export default function Cast() {
     useEffect(() => {
         fetchMovieCast(movieId).then(setCast);
       }, [movieId]);
-
-      console.log(cast);
     
     return (
-        <p>Cast</p>
+            <ul>
+                {cast && cast.cast.map(c => {
+                    return <li>
+                                <img src={
+              c.profile_path
+                ? `https://www.themoviedb.org/t/p/w185${c.profile_path}`
+                : 'https://image.freepik.com/free-vector/waves-abstract-background-with-coming-soon-text_1017-5060.jpg'
+            } alt={c.name} width="185"/>
+            <p>{c.name}</p>
+            <p>{c.character}</p>
+                            </li>
+                })}
+            </ul>
     )
 }

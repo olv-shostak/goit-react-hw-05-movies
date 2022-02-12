@@ -19,3 +19,9 @@ export function fetchMovieCast(movieId) {
     `${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`,
   );
 }
+
+export function fetchMovieReviews(movieId) {
+  return fetchWithErrorHandling(
+    `${BASE_URL}/movie/${movieId}/reviews?api_key=${API_KEY}&language=en-USpage=1`,
+  );
+}
